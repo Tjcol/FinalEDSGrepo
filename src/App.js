@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Updated imports
+import Dashboard from './pages/Dashboard';
+import CreateQuiz from './pages/CreateQuiz';
+import Login from './components/Login.js';
+import Logout from './components/Logout.js';
+import PasscodeManagement from './pages/PasscodeManagement.js';
+import AnalyticsPage from './pages/analyticsPage/AnalyticsPage.js';
+import PasscodeAccessPage from './pages/passcodeAccess/PasscodeAccessPage.js';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Logout />} />
+          <Route path="/passwd" element={<PasscodeAccessPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />      
+          <Route path="/create-quiz" element={<CreateQuiz />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/passcode-management" element={<PasscodeManagement />} />
+          <Route path="/analytics-page" element={<AnalyticsPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
